@@ -654,7 +654,12 @@ module.exports = function(app) {
         console.log("loginAirbnb()");
         console.log("LOGGING INTO AIRBNB @ " + account.airbnbUsername + ":" + account.airbnbPassword);
         
-        var data = airbnb.login({username:account.airbnbUsername, password:account.airbnbPassword});
+        airbnb.login({username:account.airbnbUsername, password:account.airbnbPassword})
+          .then(function(data) {
+            console.log('xxxxxxxxxxxxxxxxxxxx', data);
+          }, function(err) {
+            console.error('Error xxxxxxxxxxx', err);
+          });
         
         return data.token;
             
