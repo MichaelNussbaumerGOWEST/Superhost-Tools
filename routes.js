@@ -653,14 +653,14 @@ module.exports = function(app) {
         var data = airbnb.newAccessToken({username:account.airbnbUsername, password:account.airbnbPassword});
         data.then(function(res) {
             console.log('loggedin', data);
-            console.log(res);
+            resolve(data.token);
         }, function(err) {
             console.log(err);
+            reject(err);
         });
         
         
-        console.log(client);
-        
+        /*
         return data.token;
         
         
@@ -708,6 +708,7 @@ module.exports = function(app) {
                 reject(error);
             }
         });
+        */
     }
 
     function getUserInfo(account) {
