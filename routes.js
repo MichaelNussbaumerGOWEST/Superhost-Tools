@@ -651,12 +651,16 @@ module.exports = function(app) {
         console.log("LOGGING INTO AIRBNB @ " + account.airbnbUsername + ":" + account.airbnbPassword);
         
         //var data = airbnb.newAccessToken({username:account.airbnbUsername, password:account.airbnbPassword});
+        var client = new airbnb({
+                username: account.airbnbUsername,
+                password: account.airbnbPassword
+        });
+        client.login().then(function(res) {
+            console.log('loggedin', client);
+        });
         
         
-        data = new Promise(airbnb.newAccessToken({username:account.airbnbUsername, password:account.airbnbPassword}));
-        
-        
-        console.log(data);
+        console.log(client);
         
         return data.token;
         
