@@ -112,9 +112,9 @@ module.exports = function(app) {
     });
 
     app.post('/addAccount', async function(req, res) {
-        console.log("/addAccount");
+        console.log("/addAccount1");
         if(!req.user) {
-            handleError(res, "User not logged in", "/addAccount User not logged in", 403);
+            handleError(res, "User not logged in", "/addAccount2 User not logged in", 403);
         } else {
             var airbnbUsername = req.body.airbnbUsername;
             var airbnbPassword = req.body.airbnbPassword;
@@ -136,7 +136,7 @@ module.exports = function(app) {
                     res.status(200).json("success");
                 } catch(error) {
                     console.log(error);
-                    handleError(res, error.message, "/addAccount");
+                    handleError(res, error.message, "/addAccount3");
                 }
             } else {
                 handleError(res, "airbnbUsername and/or airbnbPassword not supplied", {error_code: 400, error_message: "airbnbUsername and/or airbnbPassword not supplied"}, 400);
