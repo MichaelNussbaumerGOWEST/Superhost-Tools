@@ -119,7 +119,7 @@ module.exports = function(app) {
             var airbnbUsername = req.body.airbnbUsername;
             var airbnbPassword = req.body.airbnbPassword;
             if(airbnbUsername && airbnbPassword) {
-                //try {
+                try {
                     var account = await Account.findOneAndUpdate(
                         {
                             userID: req.user._id,
@@ -134,10 +134,10 @@ module.exports = function(app) {
                     );
                     await initAirbnbAccount(req, res, account);
                     res.status(200).json("success");
-                //} catch(error) {
+                } catch(error) {
                     console.log(error);
                     handleError(res, error.message, "/addAccount3");
-                //}
+                }
             } else {
                 handleError(res, "airbnbUsername and/or airbnbPassword not supplied", {error_code: 400, error_message: "airbnbUsername and/or airbnbPassword not supplied"}, 400);
             }
@@ -524,7 +524,7 @@ module.exports = function(app) {
     //
     // Airbnb helper functions
     //
-    function performAirbnbRequest(account, endpoint, method, headers, body, URLParams, hasNewCredentials = false) {
+    function performAirbnbRequest(account, endpoint, method, headers, body, URLParams, hasNewCredentials = true) {
         console.log("performAirbnbRequest() " + method + " " + endpoint);
         return new Promise(async function(resolve, reject) {
             var host = 'api.airbnb.com';
