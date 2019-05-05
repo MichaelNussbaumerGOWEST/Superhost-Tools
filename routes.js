@@ -10,6 +10,7 @@ var Reservation = require('./models/user.account.reservation');
 var querystring = require('querystring');
 var https = require('https');
 var moment = require('moment-timezone');
+var airbnb = require('airbnbapijs');
 
 var mailer = require('./email/email');
 
@@ -647,6 +648,14 @@ module.exports = function(app) {
     function loginAirbnb(account) {
         console.log("loginAirbnb()");
         console.log("LOGGING INTO AIRBNB @ " + account.airbnbUsername + ":" + account.airbnbPassword);
+        
+        var data = airbnb.login({username: account.airbnbUsername, password: account.airbnbPassword});
+        console.log(data);
+        
+        return data.token;
+        
+        
+        
         return new Promise(async function(resolve, reject) {
             var endpoint = '/v1/authorize';
             var method = 'POST';
