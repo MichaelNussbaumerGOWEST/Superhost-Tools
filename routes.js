@@ -565,6 +565,7 @@ module.exports = function(app) {
                         console.log("performAirbnbRequest() ACCESS_TOKEN DIDN'T WORK");
                         try {
                             var airbnbAccessToken = await loginAirbnb(account);
+                            console.log(airbnbAccessToken);
                             console.log("performAirbnbRequest() LOGIN SUCCESS");
                             account.airbnbAccessToken = airbnbAccessToken;
                             headers = {'X-Airbnb-OAuth-Token': airbnbAccessToken};
@@ -582,6 +583,7 @@ module.exports = function(app) {
                 try {
                     if(hasNewCredentials) {
                         var airbnbAccessToken = await loginAirbnb(account);
+                            console.log(airbnbAccessToken);
                         console.log("performAirbnbRequest() LOGIN SUCCESS");
                         account.airbnbAccessToken = airbnbAccessToken;
                         headers = {'X-Airbnb-OAuth-Token': airbnbAccessToken};
