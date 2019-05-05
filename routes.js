@@ -656,7 +656,7 @@ module.exports = function(app) {
         
        console.log('airbnb', airbnb);
        console.log('account', account);
-        airbnb.login({username:account.airbnbUsername, password:account.airbnbPassword})
+        airbnb.login({account.airbnbUsername, account.airbnbPassword})
           .then(function(data) {
             console.log('xxxxxxxxxxxxxxxxxxxx', data);
           }, function(err) {
