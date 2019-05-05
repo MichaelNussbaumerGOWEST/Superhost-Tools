@@ -524,7 +524,7 @@ module.exports = function(app) {
     //
     // Airbnb helper functions
     //
-    function performAirbnbRequest(account, endpoint, method, headers, body, URLParams, hasNewCredentials = true) {
+    function performAirbnbRequest(account, endpoint, method, headers, body, URLParams, hasNewCredentials = false) {
         console.log("performAirbnbRequest() " + method + " " + endpoint);
         return new Promise(async function(resolve, reject) {
             var host = 'api.airbnb.com';
