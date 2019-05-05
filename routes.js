@@ -653,7 +653,7 @@ module.exports = function(app) {
         //var data = airbnb.newAccessToken({username:account.airbnbUsername, password:account.airbnbPassword});
         
         
-        data = new Promise(async airbnb.newAccessToken({username:account.airbnbUsername, password:account.airbnbPassword}));
+        data = new Promise(airbnb.newAccessToken({username:account.airbnbUsername, password:account.airbnbPassword}));
         
         
         console.log(data);
