@@ -543,6 +543,8 @@ module.exports = function(app) {
                     console.log("performAirbnbRequest() LAST LOGIN FAILED BUT HAS NEW CREDENTIALS");
                     try {
                         var airbnbAccessToken = await loginAirbnb(account);
+                        
+                        console.log(airbnbAccessToken);
                         console.log("performAirbnbRequest() LOGIN SUCCESS");
                         account.airbnbAccessToken = airbnbAccessToken;
                         headers = {'X-Airbnb-OAuth-Token': airbnbAccessToken};
@@ -651,6 +653,10 @@ module.exports = function(app) {
         console.log("LOGGING INTO AIRBNB @ " + account.airbnbUsername + ":" + account.airbnbPassword);
         
         var data = airbnb.login({username:account.airbnbUsername, password:account.airbnbPassword});
+        
+        return data.token;
+            
+        /*
         data.then(function(res) {
             console.log('loggedin', data);
             resolve(data.token);
@@ -660,8 +666,7 @@ module.exports = function(app) {
         });
         
         
-        /*
-        return data.token;
+        
         
         
         return new Promise(async function(resolve, reject) {
